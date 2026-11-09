@@ -1,0 +1,132 @@
+{
+  "categories": [
+    { "id": "files", "name": "Команды Windows для работы с файлами" },
+    { "id": "report", "name": "Команды для работы с отчётом" }
+  ],
+  "commands": {
+    "cd": { "name": "cd", "category": "files",
+      "description": "Сменить текущий каталог",
+      "usage": "cd [ПУТЬ]",
+      "examples": [
+        { "cmd": "cd testfile", "desc": "Переместиться в каталог testfile" },
+        { "cmd": "cd ..", "desc": "Подняться на уровень вверх" },
+        { "cmd": "cd ~", "desc": "Перейти в домашний каталог пользователя" } ],
+      "reportBehavior": "Выполнит переход." },
+
+    "pwd": { "name": "pwd", "category": "files",
+      "description": "Показать текущий каталог",
+      "usage": "pwd",
+      "examples": [{ "cmd": "pwd", "desc": "Текущий путь" }],
+      "reportBehavior": "Выведет путь." },
+
+    "dir":  { "name": "dir", "category": "files",
+      "description": "Вывод содержимого каталога",
+      "usage": "dir [ПУТЬ]",
+      "examples": [{ "cmd": "dir", "desc": "Содержимое текущего каталога" }],
+      "reportBehavior": "Выведет файлы." },
+
+    "mkdir": { "name": "mkdir", "category": "files",
+      "description": "Создать каталог",
+      "usage": "mkdir [КАТАЛОГ]",
+      "examples": [{ "cmd": "mkdir testfile", "desc": "Создать testfile" }],
+      "reportBehavior": "Создаст папку." },
+
+    "type": { "name": "type", "category": "files",
+      "description": "Показать содержимое файла или создать пустой файл",
+      "usage": "type [ФАЙЛ] ",
+      "usage": "type nul > [ФАЙЛ]",
+      "examples": [
+        { "cmd": "type kitset.txt", "desc": "Показать содержимое файла" },
+        { "cmd": "type nul > new.txt", "desc": "Создать пустой файл new.txt" }
+      ],
+      "reportBehavior": "Выведет содержимое или создаст файл." },
+
+    "copy": { "name": "copy", "category": "files",
+      "description": "Копировать файл",
+      "usage": "copy [ЧТО_КОПИРУЕМ] [КУДА_КОПИРУЕМ]",
+      "examples": [{ "cmd": "copy kitset.txt testik.txt", "desc": "Копировать" }],
+      "reportBehavior": "Скопирует." },
+
+    "move": { "name": "move", "category": "files",
+      "description": "Переместить файл",
+      "usage": "move [ЧТО_ПЕРЕМЕЩАЕМ] [КУДА_ПЕРЕМЕЩАЕМ]",
+      "examples": [{ "cmd": "move kitset.txt testik.txt", "desc": "Переместить" }],
+      "reportBehavior": "Переместит." },
+
+    "del": { "name": "del", "category": "files",
+      "description": "Удалить файл",
+      "usage": "del [ФАЙЛ]",
+      "examples": [{ "cmd": "del testik.txt", "desc": "Удалить" }],
+      "reportBehavior": "Удалит." },
+
+    "exit": { "name": "exit", "category": "report",
+      "description": "Выйти из программы",
+      "usage": "exit",
+      "examples": [{ "cmd": "exit", "desc": "Выход" }],
+      "reportBehavior": "Выход." },
+
+    "starts": { "name": "starts", "category": "report",
+      "description": "Начать сессию",
+      "usage": "starts [НАЗВАНИЕ]",
+      "examples": [{ "cmd": "starts Pipup", "desc": "Начать сессию" }],
+      "reportBehavior": "Создаст сессию." },
+
+    "prootd": { "name": "prootd", "category": "report",
+      "description": "Установить корневой каталог",
+      "usage": "prootd [ПУТЬ]",
+      "examples": [{ "cmd": "prootd .", "desc": "Текущий каталог" }],
+      "reportBehavior": "Установит корень." },
+
+    "mstep":   { "name": "mstep", "category": "report",
+      "description": "Начать шаг",
+      "usage": "mstep [НАЗВАНИЕ]",
+      "examples": [{ "cmd": "mstep Проверка", "desc": "Создать шаг" }],
+      "reportBehavior": "Создаст шаг." },
+
+    "mnote":   { "name": "mnote", "category": "report",
+      "description": "Добавить комментарий",
+      "usage": "mnote [ТЕКСТ]",
+      "examples": [{ "cmd": "mnote Привет", "desc": "Комментарий" }],
+      "reportBehavior": "Добавит комментарий." },
+
+    "mskip":   { "name": "mskip", "category": "report",
+      "description": "Исключить команду из отчета",
+      "usage": "mskip",
+      "examples": [{ "cmd": "mskip", "desc": "Пропустить" }],
+      "reportBehavior": "Пропустит." },
+
+    "mstatus": { "name": "mstatus", "category": "report",
+      "description": "Статус сессии",
+      "usage": "mstatus",
+      "examples": [{ "cmd": "mstatus", "desc": "Статус" }],
+      "reportBehavior": "Покажет статус." },
+
+    "mpreview":{ "name": "mpreview", "category": "report",
+      "description": "Черновик отчета",
+      "usage": "mpreview",
+      "examples": [{ "cmd": "mpreview", "desc": "Черновик" }],
+      "reportBehavior": "Создаст черновик." },
+
+    "info":    { "name": "info", "category": "report",
+      "description": "Информация о работе",
+      "usage": "info",
+      "examples": [{ "cmd": "info", "desc": "Инфо" }],
+      "reportBehavior": "Инфо." },
+
+    "instructions": { "name": "instructions", "category": "report",
+      "description": "Справка и операторы Windows",
+      "usage": "instructions [НОМЕР/ИМЯ]",
+      "examples": [
+        { "cmd": "instructions 3", "desc": "Справка по #3 (dir)" },
+        { "cmd": "dir | find \"txt\"", "desc": "Пайп (|) для Windows команд" },
+        { "cmd": "dir > files.txt", "desc": "Перенаправление (>) вывода в файл" },
+        { "cmd": "cd src && dir", "desc": "Оператор (&&) выполнит обе команды" } ],
+      "reportBehavior": "Справка." },
+
+    "ends":    { "name": "ends", "category": "report",
+      "description": "Завершить сессию",
+      "usage": "ends",
+      "examples": [{ "cmd": "ends", "desc": "Завершить" }],
+      "reportBehavior": "Завершит сессию." }
+  }
+}

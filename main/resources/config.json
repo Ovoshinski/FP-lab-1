@@ -1,0 +1,59 @@
+{
+  "shell": "cmd",
+  "reportDirectory": "reports",
+  "sessionDirectory": "sessions",
+  "logFile": "logs/report-shell.log",
+  "defaultProfile": "windows-lab",
+
+  "report": {
+    "includeTimestamps": false,
+    "includeExitCodes": "errors-only",
+    "includeDurations": false,
+    "maximumOutputLines": 100,
+    "saveFullOutputSeparately": true,
+    "allowMarkdownInNotes": false,
+    "useRelativePaths": true
+  },
+  "profiles": {
+    "windows-lab": {
+      "titleTemplate": "Лабораторная работа: {sessionName}",
+      "rules": [
+        "change-directory", "list-directory", "create-directory",
+        "show-file", "copy-file", "move-file",
+        "remove-file", "generic-command"
+      ]
+    }
+  },
+
+  "rules": [
+    { "id": "change-directory", "command": "cd", "priority": 100,
+      "descriptionTemplate": "Перейдём в каталог `{relativeDirectory}`.",
+      "showCommand": false, "outputMode": "errors-only", "enabled": true },
+    { "id": "list-directory", "command": "dir", "priority": 50,
+      "descriptionTemplate": "Просмотрим содержимое каталога `{relativeDirectory}`.",
+      "showCommand": true, "outputMode": "full", "enabled": true },
+    { "id": "create-directory", "command": "mkdir", "priority": 80,
+      "descriptionTemplate": "Создадим каталог `{argument1}`.",
+      "showCommand": true, "outputMode": "errors-only", "enabled": true },
+    { "id": "show-file", "command": "type", "priority": 80,
+      "descriptionTemplate": "Просмотрим содержимое файла `{argument1}`.",
+      "showCommand": true, "outputMode": "full", "enabled": true },
+    { "id": "copy-file", "command": "copy", "priority": 80,
+      "descriptionTemplate": "Скопируем `{argument1}` в `{argument2}`.",
+      "showCommand": true, "outputMode": "errors-only", "enabled": true },
+    { "id": "move-file", "command": "move", "priority": 80,
+      "descriptionTemplate": "Переместим `{argument1}` в `{argument2}`.",
+      "showCommand": true, "outputMode": "errors-only", "enabled": true },
+    { "id": "remove-file", "command": "del", "priority": 90,
+      "descriptionTemplate": "**Внимание:** удаление `{argument1}`.",
+      "showCommand": true, "outputMode": "errors-only", "enabled": true },
+    { "id": "generic-command", "command": "*", "priority": 0,
+      "descriptionTemplate": "Выполним команду `{command}`.",
+      "showCommand": true, "outputMode": "full", "enabled": true }
+  ],
+
+  "groupingRules": [
+    { "name": "navigation-group", "rules": ["change-directory"], "strategy": "path-concatenation" },
+    { "name": "creation-group", "rules": ["create-directory"], "strategy": "list-creation" }
+  ]
+}
